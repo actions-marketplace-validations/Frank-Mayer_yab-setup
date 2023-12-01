@@ -1,0 +1,5 @@
+name: "Yab Setup"
+description: "Install the Yab build tool."
+runs:
+  using: "node20"
+  main: "dist/index.js"

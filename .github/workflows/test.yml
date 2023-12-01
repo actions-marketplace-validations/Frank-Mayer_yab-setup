@@ -1,0 +1,31 @@
+name: "Test"
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./
+      - run: |
+          if yab hello | grep -q 'Hello, world!'; then
+              echo "Test passed!"
+          else
+              echo "Test failed!"
+              exit 1
+          fi
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./
+  mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./
